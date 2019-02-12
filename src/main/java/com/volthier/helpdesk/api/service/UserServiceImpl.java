@@ -5,9 +5,11 @@ import com.volthier.helpdesk.api.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
@@ -33,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(String id) {
-        userRepository.delete(id);
+        userRepository.deleteById(id);
 
     }
 
