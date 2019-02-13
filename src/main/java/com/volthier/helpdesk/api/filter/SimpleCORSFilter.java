@@ -1,4 +1,4 @@
-package com.volthier.helpdesk.api.security.filter;
+package com.volthier.helpdesk.api.filter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.core.Ordered;

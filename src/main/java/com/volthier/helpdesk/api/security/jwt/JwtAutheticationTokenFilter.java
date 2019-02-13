@@ -1,5 +1,6 @@
 package com.volthier.helpdesk.api.security.jwt;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,16 +16,10 @@ import java.io.IOException;
 
 public class JwtAutheticationTokenFilter extends OncePerRequestFilter {
 
+    @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
-    public JwtAutheticationTokenFilter() {
-    }
-
-    public JwtAutheticationTokenFilter(UserDetailsService userDetailsService, JwtTokenUtil jwtTokenUtil) {
-        this.userDetailsService = userDetailsService;
-        this.jwtTokenUtil = jwtTokenUtil;
-    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {

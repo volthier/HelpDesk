@@ -6,6 +6,7 @@ import com.volthier.helpdesk.api.security.jwt.JwtTokenUtil;
 import com.volthier.helpdesk.api.security.model.CurrentUser;
 import com.volthier.helpdesk.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 @CrossOrigin(origins = "*")
 public class AuthenticationRestController {
 
+    @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -32,6 +34,7 @@ public class AuthenticationRestController {
     private UserDetailsService userDetailsService;
     @Autowired
     private UserService userService;
+
 
     @PostMapping(value = "/api/auth")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationResquest authenticationResquest) throws AuthenticationException {

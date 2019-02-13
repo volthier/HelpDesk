@@ -3,6 +3,7 @@ package com.volthier.helpdesk.api.security.service;
 import com.volthier.helpdesk.api.entity.User;
 import com.volthier.helpdesk.api.security.jwt.JwtUserFactory;
 import com.volthier.helpdesk.api.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
