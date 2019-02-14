@@ -3,7 +3,6 @@ package com.volthier.helpdesk.api.controllers;
 import com.volthier.helpdesk.api.entity.User;
 import com.volthier.helpdesk.api.response.Response;
 import com.volthier.helpdesk.api.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -62,6 +61,7 @@ public class UserController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Response<User>> update(HttpServletRequest request, @RequestBody User user, BindingResult result) {
         Response<User> response = new Response<User>();
         try {
