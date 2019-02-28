@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 public class User {
 
     @Id
+    @NotBlank
     private String id;
     @Indexed(unique = true)
     @NotBlank(message = "Email requerido")
