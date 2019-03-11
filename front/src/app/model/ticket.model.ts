@@ -6,12 +6,13 @@ export class Ticket {
     public id: string,
     public number: number,
     public title: string,
+    public description: string,
     public status: string,
     public priority: string,
-    public imagem: string,
+    public image: string,
     public user: User,
     public assignedUser: User,
-    public date: Date,
+    public date: string,
     public changes: Array<string>
   ) { }
 }
