@@ -21,7 +21,7 @@ export class TicketListComponent implements OnInit {
   message: {};
   classCss: {};
   listTicket = [];
-  ticketFilter = new Ticket(null,0,'','','','','',null,null,'',null);
+  ticketFilter = new Ticket('',0,'','','','','',null,null,'',null);
 
   constructor(
     private dialogService: DialogService,
@@ -50,6 +50,7 @@ export class TicketListComponent implements OnInit {
   filter(): void{
     this.page = 0;
     this.count = 5;
+    console.log(this.ticketFilter)
     this.ticketService.findByParams(this.page, this.count, this.assignedToMe, this.ticketFilter)
       .subscribe((responseApi: ResponseApi) => {
           this.ticketFilter.title = this.ticketFilter.title == 'uninformed' ? '' : this.ticketFilter.title;
@@ -68,7 +69,7 @@ export class TicketListComponent implements OnInit {
     this.assignedToMe = false;
     this.page = 0;
     this.count = 5;
-    this.ticketFilter = new Ticket(null,0,'','','','','',null,null,'',null);
+    this.ticketFilter = new Ticket('',0,'','','','','',null,null,'',null);
     this.findAll(this.page, this.count);
   }
 
