@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
 export class TicketListComponent implements OnInit {
 
   shared: SharedService;
-  assignedToMe: boolean;
+  assignedToMe: boolean = true;
   page: number = 0;
   count: number = 5;
   pages: Array< number>;
@@ -50,10 +50,9 @@ export class TicketListComponent implements OnInit {
   filter(): void{
     this.page = 0;
     this.count = 5;
-    console.log(this.ticketFilter)
-    this.ticketService.findByParams(this.page, this.count, this.assignedToMe, this.ticketFilter)
+    this.ticketService.findByParams(this.page, this.count, this.ticketFilter, this.assignedToMe)
       .subscribe((responseApi: ResponseApi) => {
-          this.ticketFilter.title = this.ticketFilter.title == 'uninformed' ? '' : this.ticketFilter.title;
+          this.ticketFilter.title = this.ticketFilter.title === 'uninformed' ? '' : this.ticketFilter.title;
           this.ticketFilter.number = this.ticketFilter.number ==  0 ? null : this.ticketFilter.number;
           this.listTicket = responseApi['data']['content'];
         this.pages = new Array(responseApi['data']['totalPages']);

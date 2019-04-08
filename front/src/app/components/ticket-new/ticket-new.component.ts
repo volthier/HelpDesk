@@ -77,7 +77,7 @@ export class TicketNewComponent implements OnInit {
       this.ticket.image = '';
       var reader = new FileReader();
       reader.onloadend = (e: Event) => {
-        this.ticket.image = reader.result;
+        this.ticket.image = reader.result.toString();
       }
       reader.readAsDataURL(event.target.files[0]);
     }
