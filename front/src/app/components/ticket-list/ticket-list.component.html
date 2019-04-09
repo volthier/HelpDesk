@@ -95,24 +95,24 @@
       <div class="box-body">
         <table class="table table-bordered">
           <tbody><tr>
-            <th>Number</th>
-            <th>Title</th>
-            <th>Priority</th>
-            <th>Status</th>
-            <th>Owner</th>
-            <th style="width: 10px" *ngIf="shared.user.profile == 'CUSTOMER'">&nbsp;</th>
-            <th style="width: 10px" *ngIf="shared.user.profile == 'CUSTOMER'">&nbsp;</th>
-            <th style="width: 10px">&nbsp;</th>
+            <th class="text-left">Number</th>
+            <th class="text-center">Title</th>
+            <th class="text-center">Priority</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Owner</th>
+            <th *ngIf="shared.user.profile == 'CUSTOMER'"></th>
+            <th *ngIf="shared.user.profile == 'CUSTOMER'"></th>
+            <th></th>
           </tr>
           <tr *ngFor="let ticket of listTicket; let i = index">
             <td>{{ticket.number}}</td>
-            <td>{{ticket.title}}</td>
-            <td>{{ticket.priority}}</td>
-            <td>{{ticket.status}}</td>
-            <td>{{ticket.user.email}}</td>
-            <td><button class="btn btn-primary" (click)="edit(ticket.id)" *ngIf="shared.user.profile == 'CUSTOMER'">Edit</button>       </td>
-            <td><button class="btn btn-danger" (click)="delete(ticket.id)" *ngIf="shared.user.profile == 'CUSTOMER'">Delete</button>       </td>
-            <td><button class="btn btn-success" (click)="detail(ticket.id)">Detail</button>       </td>
+            <td class="text-center">{{ticket.title}}</td>
+            <td class="text-center">{{ticket.priority}}</td>
+            <td class="text-center">{{ticket.status}}</td>
+            <td class="text-center">{{ticket.user.email}}</td>
+            <td *ngIf="shared.user.profile == 'CUSTOMER'"><button class="btn btn-primary" style="margin: auto; display: block" (click)="edit(ticket.id)" >Edit</button></td>
+            <td *ngIf="shared.user.profile == 'CUSTOMER'"><button class="btn btn-danger" style="margin: auto; display: block" (click)="delete(ticket.id)">Delete</button></td>
+            <td><button class="btn btn-success" style="margin: auto; display: block" (click)="detail(ticket.id)">Detail</button>       </td>
           </tr>
 
           </tbody>
