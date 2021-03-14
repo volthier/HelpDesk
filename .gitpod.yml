@@ -2,5 +2,6 @@ image:
   file: .gitpod.dockerfile
 
 tasks:
-  - init: ./mvnw install -DskipTests=false
-  - command: mkdir -p /workspace/data && mongod --dbpath /workspace/data
+  - init: ./mvnw clean install && ./front/yarn install
+    command: mkdir -p /workspace/data && mongod --dbpath /workspace/data
+    command: mvn spring-boot:run && ./front/yarn start
