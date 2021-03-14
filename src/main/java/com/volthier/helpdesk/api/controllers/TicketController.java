@@ -176,7 +176,7 @@ public class TicketController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping(value = "{page}/{count}/{number}/{title}/{status}/{priority}")//{assigned}
+    @GetMapping(value = "{page}/{count}/{number}/{title}/{status}/{priority}/{assigned}")
     @PreAuthorize("hasAnyRole('CUSTOMER','TECHNICIAN')")
     public ResponseEntity<Response<Page<Ticket>>> findByParams(
             HttpServletRequest request,

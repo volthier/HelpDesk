@@ -23,4 +23,11 @@
 /nbdist/
 /.nb-gradle/
 /build/
+/target/ f
+
+###FRONT ###
+/front/node_modules
+/front/.idea
+./front/node_modules
+./front/.idea
 
