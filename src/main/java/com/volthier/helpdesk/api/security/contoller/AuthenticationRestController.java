@@ -6,7 +6,6 @@ import com.volthier.helpdesk.api.security.jwt.JwtTokenUtil;
 import com.volthier.helpdesk.api.security.model.CurrentUser;
 import com.volthier.helpdesk.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
