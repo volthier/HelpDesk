@@ -37,7 +37,7 @@ public class TicketServiceImpl implements TicketService{
 
     @Override
     public Page<Ticket> findAll(int page, int count) {
-        Pageable pages = new PageRequest(page,count);
+        Pageable pages = PageRequest.of(page,count);
         return ticketRepository.findAll(pages);
     }
 
@@ -53,25 +53,25 @@ public class TicketServiceImpl implements TicketService{
 
     @Override
     public Page<Ticket> findByCurrentUser(int page, int count, String userId) {
-        Pageable pages = new PageRequest(page,count);
+        Pageable pages = PageRequest.of(page,count);
         return ticketRepository.findByUserIdOrderByDateDesc(pages, userId);
     }
 
     @Override
     public Page<Ticket> findByParameters(int page, int count, String title, String status, String priority) {
-        Pageable pages = new PageRequest(page,count);
+        Pageable pages = PageRequest.of(page,count);
         return ticketRepository.findByTitleIgnoreCaseContainingAndStatusIgnoreCaseContainingAndPriorityIgnoreCaseContainingOrderByDateDesc(title, status, priority, pages);
     }
 
     @Override
     public Page<Ticket> findByParametersAndCurentUser(int page, int count, String title, String status, String priority, String userId) {
-        Pageable pages = new PageRequest(page,count);
+        Pageable pages = PageRequest.of(page,count);
         return ticketRepository.findByTitleIgnoreCaseContainingAndStatusIgnoreCaseContainingAndPriorityIgnoreCaseContainingAndUserIdOrderByDateDesc(title, status, priority, userId, pages);
     }
 
     @Override
     public Page<Ticket> findByNumber(int page, int count, Integer number) {
-        Pageable pages = new PageRequest(page,count);
+        Pageable pages = PageRequest.of(page,count);
         return ticketRepository.findByNumber(number, pages);
     }
 
@@ -82,7 +82,7 @@ public class TicketServiceImpl implements TicketService{
 
     @Override
     public Page<Ticket> findByParametersAndAssignedUser(int page, int count, String title, String status, String priority, String assignedUser) {
-        Pageable pages = new PageRequest(page,count);
+        Pageable pages = PageRequest.of(page,count);
         return ticketRepository.findByTitleIgnoreCaseContainingAndStatusIgnoreCaseContainingAndPriorityIgnoreCaseContainingAndAssignedUserIdOrderByDateDesc(title, status, priority, assignedUser, pages);
     }
 }

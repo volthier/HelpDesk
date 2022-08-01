@@ -26,14 +26,17 @@ import javax.servlet.http.HttpServletRequest;
 @CrossOrigin(origins = "*")
 public class AuthenticationRestController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-    @Autowired
-    private UserDetailsService userDetailsService;
-    @Autowired
-    private UserService userService;
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenUtil jwtTokenUtil;
+    private final UserDetailsService userDetailsService;
+    private final UserService userService;
+
+    public AuthenticationRestController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, UserDetailsService userDetailsService, UserService userService) {
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.userDetailsService = userDetailsService;
+        this.userService = userService;
+    }
 
 
     @PostMapping(value = "/api/auth")
