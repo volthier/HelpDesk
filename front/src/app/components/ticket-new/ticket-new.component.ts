@@ -14,7 +14,7 @@ import {stringify} from "querystring";
 })
 export class TicketNewComponent implements OnInit {
 
-  @ViewChild('form')
+  @ViewChild('form', { static: true })
   form: NgForm;
 
   ticket = new Ticket(null,0,'','','','','',null,null,'',null);

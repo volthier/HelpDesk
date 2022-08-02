@@ -13,7 +13,7 @@ import {ResponseApi} from "../../model/response-api";
 })
 export class UserNewComponent implements OnInit {
 
-  @ViewChild('form')
+  @ViewChild('form', { static: true })
   form: NgForm;
 
   user = new User(null,'','','');
