@@ -5,7 +5,6 @@ import {SharedService} from "../../services/shared.service";
 import {ActivatedRoute} from "@angular/router";
 import {TicketService} from "../../services/ticket.service";
 import {ResponseApi} from "../../model/response-api";
-import {stringify} from "querystring";
 
 @Component({
   selector: 'app-ticket-new',

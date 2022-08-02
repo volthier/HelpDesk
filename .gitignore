@@ -30,3 +30,5 @@
 /front/.idea
 ./front/node_modules
 ./front/.idea
+/front/.angular/
+/front/yarn.lock

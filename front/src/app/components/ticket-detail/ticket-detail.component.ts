@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../../model/user.model";
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {SharedService} from "../../services/shared.service";
 import {TicketService} from "../../services/ticket.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ResponseApi} from "../../model/response-api";
 import {Ticket} from "../../model/ticket.model";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-ticket-detail',
@@ -12,6 +12,9 @@ import {Ticket} from "../../model/ticket.model";
   styleUrls: ['./ticket-detail.component.css']
 })
 export class TicketDetailComponent implements OnInit {
+
+  @ViewChild('form', { static: true })
+  form: NgForm;
 
   ticket = new Ticket(null,0,'','','','','',null,null,'',null);
 
@@ -82,6 +85,24 @@ export class TicketDetailComponent implements OnInit {
       'has-error': isInvalid && isDirty,
       'has-success': !isInvalid && isDirty
     };
+  }
+
+  register(){
+    this.message = '';
+    this.ticketService.createOrUpdate(this.ticket).subscribe((responseApi: ResponseApi) => {
+      this.ticket = new Ticket(null,0,'','','','','',null,null,'',null);
+      let ticketRet: Ticket = responseApi.data;
+      this.form.resetForm();
+      this.showMessage({
+        type: 'success',
+        text: `Registered ${ticketRet.title} successfully!`
+      })
+    }, err => {
+      this.showMessage({
+        type: 'error',
+        text: err['error']['errors'[0]]
+      });
+    });
   }
 
 }
